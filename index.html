@@ -11,6 +11,7 @@
   <style>
     :root {
       --header-height: 52px;
+      --tabs-space: 60px; /* Platz für Google-Sheets-Tabs */
     }
 
     * {
@@ -21,12 +22,16 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: #f5f5f5;
-      height: 100vh;
+
+      height: 100svh;          /* sichtbarer Viewport */
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
     }
 
     header {
       height: var(--header-height);
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -36,30 +41,20 @@
       background: #111;
       color: #fff;
       text-align: center;
-      line-height: 1.2;
     }
 
     iframe {
-      width: 100%;
-      height: calc(100vh - var(--header-height));
+      flex: 1;
       border: none;
       background: #fff;
+
+      /* WICHTIG: Platz für Tabs */
+      padding-bottom: var(--tabs-space);
     }
 
-    /* Größere Schrift auf größeren Displays */
     @media (min-width: 768px) {
       header {
         font-size: 18px;
-      }
-    }
-
-    /* Querformat auf Handy */
-    @media (max-height: 450px) {
-      :root {
-        --header-height: 44px;
-      }
-      header {
-        font-size: 14px;
       }
     }
   </style>
